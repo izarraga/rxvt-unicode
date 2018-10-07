@@ -192,7 +192,7 @@
 /*
  * Disable all bell indications
  */
-/* #define NO_BELL */
+#define NO_BELL
 
 /*
  * Disable automatic de-iconify when a bell is received
