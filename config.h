@@ -140,7 +140,7 @@
 #define HAVE_SIGNALFD 1
 
 /* Define if freedesktop startup notifications should be supported */
-#define HAVE_STARTUP_NOTIFICATION 1
+/* #undef HAVE_STARTUP_NOTIFICATION */
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #define HAVE_STDINT_H 1
@@ -271,7 +271,7 @@
 #define MOUSE_SLIP_WHEELING 1
 
 /* Define to use wheel events (button4 and button5) to scroll */
-/* #undef MOUSE_WHEEL */
+#define MOUSE_WHEEL 1
 
 /* Disable assertions (good for debugging) */
 #define NDEBUG 1
