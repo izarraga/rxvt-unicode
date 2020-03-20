@@ -18,3 +18,5 @@ apt-get install libxft-dev
 make
 
 make install
+
+cp urxvt.sh /usr/local/bin/
