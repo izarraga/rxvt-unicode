@@ -1,0 +1,216 @@
+!-------------------------------
+! rxvt-unicode  $HOME/.Xdefaults
+!-------------------------------
+! 
+! xrdb -load .Xdefaults -> reload urxvt configuration 
+
+! apt install libperl-dev libxft-dev
+! ./configure --prefix=/opt/rxvt-unicode/ --disable-pixbuf --disable-mousewheel 
+
+! Teclas:
+! Ctrl-Alt c/v -> Copy/Paste
+! Ctrl+Print -> Save buffer in $HOME/urxvt
+!
+! Change font: printf '\33]50;%s\007' "9x15bold,xft:Kochi Gothic"
+!
+! \033] -> Send fake keystroke ESC-] (this announces a terminal control secuence)
+! 710;  -> terminal control: set normal font, followed by the font description
+! 711;  -> set bold font
+! 712;  -> set italic font
+! 713;  -> set bold/italic font
+! \077  -> end command
+
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+! hintstyle: hintnone, hintslight, hintmedium, hintfull.
+Xft.hintstyle:  hintfull
+Xft.autohint:   false
+Xft.lcdfilter:  lcddefault
+
+!-------------------------------------------------------------------------------
+! URxvt settings
+! More info at:
+! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
+!-------------------------------------------------------------------------------
+URxvt.termName:       rxvt-unicode
+URxvt.visualBell:     false
+URxvt.display:        :0
+URxvt.depth:          32
+URxvt.geometry:       120x30
+URxvt.transparent:    false
+URxvt.fading:         0
+URxvt.loginShell:     false
+URxvt.meta:           ignore
+URxvt.utmpInhibit:    true
+URxvt.saveLines:      30000
+! internalBorder: espacios entre el texto y el borde de la consola
+URxvt.internalBorder: 2
+! lineSpace: espacio entre las lineas
+URxvt.lineSpace:      0
+
+! to match gnome-terminal "Linux console" scheme
+URxvt.background: #000000
+URxvt.foreground: #ffffff
+! black
+URxvt.color0  : #000000
+URxvt.color8  : #555555
+! red
+URxvt.color1  : #AA0000
+URxvt.color9  : #FF5555
+! green
+URxvt.color2  : #00AA00
+URxvt.color10 : #55FF55
+! yellow
+URxvt.color3  : #AA5500
+URxvt.color11 : #FFFF55
+! blue
+URxvt.color4  : #0000AA
+URxvt.color12 : #5555FF
+! magenta
+URxvt.color5  : #AA00AA
+URxvt.color13 : #FF55FF
+! cyan
+URxvt.color6  : #00AAAA
+URxvt.color14 : #55FFFF
+! white
+URxvt.color7  : #AAAAAA
+URxvt.color15 : #FFFFFF
+
+! Fonts
+URxvt.allow_bold:     false
+URxvt.font:           xft:Courier 10 Pitch:pixelsize=16
+URxvt.boldFont:       xft:Courier 10 Pitch:pixelsize=16
+URxvt.italicFont:     xft:Courier 10 Pitch:pixelsize=16
+URxvt.boldItalicFont: xft:Courier 10 Pitch:pixelsize=16
+
+! Fix font space
+URxvt.letterSpace: -2
+
+URxvt.keysym.Control-1: command:\033]710;xft:Courier 10 Pitch:pixelsize=16:autohint=false\007
+URxvt.keysym.Control-2: command:\033]710;xft:Monospace:pixelsize=14:autohint=false\007
+URxvt.keysym.Control-3: command:\033]710;xft:DejaVu Sans Mono:size=11\007
+URxvt.keysym.Control-4: command:\033]710;xft:Bitstream Vera Sans Mono:pixelsize=15:antialias=true\007
+URxvt.keysym.Control-5: command:\033]710;-*-fixed-medium-r-*-*-14-*-*-*-*-*-iso8859-*\007
+
+! Cursor
+URxvt.cursorBlink: false
+URxvt.cursorColor: #FF00FF
+URxvt.cursorUnderline: false
+
+! Pointer
+URxvt.pointerBlank: true
+
+! disable ctrl+shift binding
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+! scrollbar style - rxvt (default), plain (most compact), next, or xterm
+URxvt.scrollstyle: rxvt
+URxvt.scrollBar: false
+URxvt.urgentOnBell: false
+
+URxvt.scrollBar_right: false
+
+! do not scroll with output
+URxvt.scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt.scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt.scrollTtyKeypress: true
+
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+! scrollback one line
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+
+!Ctrl+Print or Shilft+Print to save screen with scrollbar.
+!URxvt.print-pipe: cat > /dev/null
+URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+
+!! Yeah, I am one of those, who use these keys in Vim :-(
+!urxvt.keysym.Home:          \033[1~
+!urxvt.keysym.End:           \033[4~
+!urxvt.keysym.Control-Up:    \033[1;5A
+!urxvt.keysym.Control-Down:  \033[1;5B
+!urxvt.keysym.Control-Left:  \033[1;5D
+!urxvt.keysym.Control-Right: \033[1;5C
+!
+
+
+!------------------------
+! PERL EXTENSIONS loaded
+!------------------------
+!URxvt.perl-ext-common: selection-to-clipboard,searchable-scrollback,font-size,fullscreen,tabbedex,matcher
+URxvt.perl-ext-common: selection-to-clipboard,searchable-scrollback,font-size,fullscreen,tabbedex
+
+!---------------------------------
+! FONT-SIZE
+!---------------------------------
+!https://github.com/majutsushi/urxvt-font-size
+!Control-minus = Control-0x2b (Ctrl + -)
+!Control-plus  = Control-0x2d (Ctrl + +)
+URxvt.keysym.Control-Up:    font-size:increase
+URxvt.keysym.Control-Down:  font-size:decrease
+!URxvt.keysym.Control-plus:  font-size:incglobal
+!URxvt.keysym.Control-minus: font-size:decglobal
+URxvt.keysym.Control-0:     font-size:reset
+URxvt.keysym.Control-9:     font-size:show
+URxvt.font-size.step: 2
+
+!---------------------------------
+! FULLSCREEN
+!---------------------------------
+! To work # apt-get install wmctrl
+URxvt.keysym.F11:	perl:fullscreen:switch
+
+!---------------------------------
+! SEARCHABLE-SCROLLBACK
+!---------------------------------
+URxvt.searchable-scrollback: Control-s
+
+!---------------------------------
+! TABBEDEX  (urxvt -pe tabbedex)
+!---------------------------------
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 2
+URxvt.tabbed.tab-bg: 8
+URxvt.tabbed.new-button: no 
+URxvt.tabbed.title: no
+URxvt.tabbed.autohide: yes
+URxvt.tabbed.no-tabbedex-keys: yes
+
+URxvt.keysym.Control-Shift-Up:    perl:tabbedex:new_tab
+URxvt.keysym.Control-Shift-Down:  perl:tabbedex:kill_tab
+URxvt.keysym.Control-r:           perl:tabbedex:rename_tab
+URxvt.keysym.Control-Right:       perl:tabbedex:next_tab
+URxvt.keysym.Control-Left:        perl:tabbedex:prev_tab
+URxvt.keysym.Control-Shift-Left:  perl:tabbedex:move_tab_left
+URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
+
+URxvt.keysym.Meta-F1: perl:tabbedex:goto_tab_1
+URxvt.keysym.Meta-F2: perl:tabbedex:goto_tab_2
+URxvt.keysym.Meta-F3: perl:tabbedex:goto_tab_3
+URxvt.keysym.Meta-F4: perl:tabbedex:goto_tab_4
+URxvt.keysym.Meta-F5: perl:tabbedex:goto_tab_5
+URxvt.keysym.Meta-F6: perl:tabbedex:goto_tab_6
+URxvt.keysym.Meta-F7: perl:tabbedex:goto_tab_7
+URxvt.keysym.Meta-F8: perl:tabbedex:goto_tab_8
+URxvt.keysym.Meta-F9: perl:tabbedex:goto_tab_9
+
+!-----------------------------
+! enable URL macher
+!-----------------------------
+!URxvt.urlLauncher: /opt/google/chrome/chrome
+!URxvt.colorUL: #ff6600
+!URxvt.matcher.button: 1
+
